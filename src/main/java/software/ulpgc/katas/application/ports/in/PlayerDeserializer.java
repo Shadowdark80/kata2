@@ -6,5 +6,5 @@ import java.io.Reader;
 import java.util.List;
 
 public interface PlayerDeserializer {
-    List<Player> deserializer(Reader source);
+    List<Player> deserialize(Reader source);
 }
