@@ -9,14 +9,22 @@ import java.util.Map;
 
 public record StreamSerializer() implements DataSerializer {
     @Override
-    public void serializeData(Map<String, Double> salaryPerPoint, OutputStream output) {
+    public void serializeData(Map<String, Double> salaryPerPoint, OutputStream output) throws IOException {
+        outputStreamNull(output);
         try {
-            writeLine("Ganancias por punto , ", output);
+            dataWriteLine(salaryPerPoint, output);
             for (Map.Entry<String, Double> entry : salaryPerPoint.entrySet()){
                 writeLine(formatLine(entry.getKey(), entry.getValue()), output);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error al escribir en el flujo de salida", e);
+        }
+    }
+
+    private void dataWriteLine(Map<String, Double> salaryPerPoint, OutputStream outputStream) throws IOException {
+        writeLine("Ganancias por punto , ", outputStream);
+        if (salaryPerPoint == null || salaryPerPoint.isEmpty()) {
+            writeLine("No hay datos disponibles", outputStream);
         }
     }
 
@@ -27,5 +35,11 @@ public record StreamSerializer() implements DataSerializer {
     private void writeLine(String text, OutputStream output) throws IOException {
         String line = text + System.lineSeparator();
         output.write(line.getBytes(StandardCharsets.UTF_8));
+    }
+
+    private void outputStreamNull(OutputStream o) {
+        if (o == null) {
+            throw new IllegalArgumentException("El OutputStream no puede ser nulo");
+        }
     }
 }
