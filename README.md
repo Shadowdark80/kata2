@@ -52,14 +52,14 @@ DataSerializer -> Contrato genérico para empujar el cálculo final hacia un Out
 
 Para ganar soltura técnica, la kata se ha repetido tres veces con el mismo alcance principal, practicar la arquitectura hexagonal y familiarizarse y coger soltura con las InputStreams y OutputStreams.
 
-Variación introducida: Se implementó una clase ReaderFactory que permite instanciar el flujo de entrada desde un archivo físico (origen 1) o desde un String en memoria (origen 2), enviando posteriormente los datos tanto por consola como persistiendo los resultados a disco duro en un nuevo archivo local nba_salary_per_point.csv.
+- Variación introducida: Se implementó una clase ReaderFactory que permite instanciar el flujo de entrada desde un archivo físico (origen 1) o desde un String en memoria (origen 2), enviando posteriormente los datos tanto por consola como persistiendo los resultados a disco duro en un nuevo archivo local nba_salary_per_point.csv.
 
 **Evidencias de verificación o pruebas realizadas**
 
 El programa fue verificado directamente inyectando los distintos Streams desde la clase Main. Se comprobó:
 
-Resistencia a datos sucios: Al leer la cabecera inicial o una línea vacía desde el Stream en memoria, el sistema no crashea (evita el NumberFormatException), sino que lanza un error controlado por consola ("Fila ignorada...") y continúa procesando el resto de jugadores válidos.
-Reutilización del cálculo: El mapa earnings procesado una sola vez por el caso de uso es consumido con éxito por dos serializadores diferentes de forma consecutiva (demostrando que el flujo no se ha cerrado ni acoplado).
+- Resistencia a datos sucios: Al leer la cabecera inicial o una línea vacía desde el Stream en memoria, el sistema no crashea (evita el NumberFormatException), sino que lanza un error controlado por consola ("Fila ignorada...") y continúa procesando el resto de jugadores válidos.
+- Reutilización del cálculo: El mapa earnings procesado una sola vez por el caso de uso es consumido con éxito por dos serializadores diferentes de forma consecutiva (demostrando que el flujo no se ha cerrado ni acoplado).
 Generación de archivo exitosa: Al finalizar la ejecución, se crea un fichero válido nba_salary_per_point.csv con cabecera y el resultado mapeado.
 
 **Vídeo explicativo**
