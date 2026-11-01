@@ -1,9 +1,9 @@
 # Kata 2 - Entrada, Salida y Transformación de Datos
 
-## Objetivo de la entrega
+##Objetivo de la entrega
 El objetivo de esta segunda kata es dominar las operaciones de entrada/salida (I/O) en Java y asentar la **Arquitectura Hexagonal**. El propósito principal es cargar datos estructurados (CSV) desde distintos orígenes (`InputStream`), transformarlos mediante un cálculo significativo (promediar salarios por cada punto anotado de jugadores de la NBA) y generar un reporte de salida reproducible (`OutputStream`), todo ello sin acoplar la lógica de negocio al origen o destino concreto de los datos.
 
-## ⚙️ Cómo compilar y ejecutar
+##Cómo compilar y ejecutar
 Para probar este proyecto desde cero en cualquier máquina:
 
 1. Clona el repositorio:
@@ -16,14 +16,14 @@ Para probar este proyecto desde cero en cualquier máquina:
 
 Nota importante: El archivo nba_players_full_stats.csv debe estar situado directamente en la raíz del proyecto para que se detecte como recurso local correctamente.
 
-**Dependencias y versión de JDK**
+###Dependencias y versión de JDK
 - Lenguaje y versión: Java Development Kit (JDK) 26.
 
 - Gestor de dependencias: Maven (pom.xml ajustado explícitamente a <maven.compiler.source>26</maven.compiler.source>).
 
 - Dependencias externas: Ninguna. Se emplean exclusivamente las bibliotecas nativas de Java (I/O, Util y Streams API) para garantizar control y ligereza en los adaptadores.
 
-**Estructura de la entrega y clases principales**
+###Estructura de la entrega y clases principales
 
 - El proyecto implementa la abstracción de Puertos y Adaptadores (Arquitectura Hexagonal):
 
@@ -48,7 +48,7 @@ DataSerializer -> Contrato genérico para empujar el cálculo final hacia un Out
 
 **Main**: Conecta las implementaciones y demuestra la capacidad multiplataforma (lee memoria/archivo e imprime consola/fichero).
 
-**Repetición de la kata y variaciones introducidas**
+###Repetición de la kata y variaciones introducidas
 
 Para ganar soltura técnica, la kata se ha repetido tres veces con el mismo alcance principal, practicar la arquitectura hexagonal y familiarizarse y coger soltura con las InputStreams y OutputStreams.
 
@@ -62,4 +62,4 @@ El programa fue verificado directamente inyectando los distintos Streams desde l
 - Reutilización del cálculo: El mapa earnings procesado una sola vez por el caso de uso es consumido con éxito por dos serializadores diferentes de forma consecutiva (demostrando que el flujo no se ha cerrado ni acoplado).
 - Generación de archivo exitosa: Al finalizar la ejecución, se crea un fichero válido nba_salary_per_point.csv con cabecera y el resultado mapeado.
 
-**Vídeo explicativo**
+###Vídeo explicativo
