@@ -17,40 +17,40 @@ Para probar este proyecto desde cero en cualquier máquina:
 Nota importante: El archivo nba_players_full_stats.csv debe estar situado directamente en la raíz del proyecto para que se detecte como recurso local correctamente.
 
 **Dependencias y versión de JDK**
-Lenguaje y versión: Java Development Kit (JDK) 26.
+- Lenguaje y versión: Java Development Kit (JDK) 26.
 
-Gestor de dependencias: Maven (pom.xml ajustado explícitamente a <maven.compiler.source>26</maven.compiler.source>).
+- Gestor de dependencias: Maven (pom.xml ajustado explícitamente a <maven.compiler.source>26</maven.compiler.source>).
 
-Dependencias externas: Ninguna. Se emplean exclusivamente las bibliotecas nativas de Java (I/O, Util y Streams API) para garantizar control y ligereza en los adaptadores.
+- Dependencias externas: Ninguna. Se emplean exclusivamente las bibliotecas nativas de Java (I/O, Util y Streams API) para garantizar control y ligereza en los adaptadores.
 
 **Estructura de la entrega y clases principales**
 
-El proyecto implementa la abstracción de Puertos y Adaptadores (Arquitectura Hexagonal):
+- El proyecto implementa la abstracción de Puertos y Adaptadores (Arquitectura Hexagonal):
 
-Dominio (domain.model):
+1. Dominio (domain.model):
 Player -> Record inmutable que representa la entidad del jugador de la NBA.
-
-Casos de Uso (usecases):
+ 
+2. Casos de Uso (usecases):
 SalaryPerPoint -> Realiza la lógica matemática, devolviendo un Map<String, Double> con las ganancias por punto. No conoce ficheros, formatos ni impresoras.
 
-Puertos de Entrada/Salida (ports.in / ports.out):
+3. Puertos de Entrada/Salida (ports.in / ports.out):
 PlayerDeserializer -> Contrato para convertir cualquier Reader en una lista de entidades.
 
-DataSerializer: Contrato genérico para empujar el cálculo final hacia un OutputStream.
+DataSerializer -> Contrato genérico para empujar el cálculo final hacia un OutputStream.
 
-Adaptadores (infrastructure.adapters):
+4. Adaptadores (infrastructure.adapters):
 
-PlayerLoader -> Implementación de la entrada que parsea el CSV saltándose la cabecera y controlando errores como líneas en blanco.
+- PlayerLoader -> Implementación de la entrada que parsea el CSV saltándose la cabecera y controlando errores como líneas en blanco.
 
-StreamSerializer y CsvStreamSerializer -> Convierten el resultado matemático a texto o formato CSV y lo transforman al OutputStream delegando el formateo en métodos privados auxiliares (Separation of Concerns).
+- StreamSerializer y CsvStreamSerializer -> Convierten el resultado matemático a texto o formato CSV y lo transforman al OutputStream delegando el formateo en métodos privados auxiliares (Separation of Concerns).
 
-ReaderFactory -> Orquesta y abstrae la generación de flujos.
+- ReaderFactory -> Orquesta y abstrae la generación de flujos.
 
-Main: Conecta las implementaciones y demuestra la capacidad multiplataforma (lee memoria/archivo e imprime consola/fichero).
+**Main**: Conecta las implementaciones y demuestra la capacidad multiplataforma (lee memoria/archivo e imprime consola/fichero).
 
 **Repetición de la kata y variaciones introducidas**
 
-Para ganar soltura técnica, la kata se ha repetido tres veces con el mismo alcance principal, practicar la arquitectura hexagonal y familiarizarse y coger soltura con las InputStreams y OutputStreams 
+Para ganar soltura técnica, la kata se ha repetido tres veces con el mismo alcance principal, practicar la arquitectura hexagonal y familiarizarse y coger soltura con las InputStreams y OutputStreams.
 
 Variación introducida: Se implementó una clase ReaderFactory que permite instanciar el flujo de entrada desde un archivo físico (origen 1) o desde un String en memoria (origen 2), enviando posteriormente los datos tanto por consola como persistiendo los resultados a disco duro en un nuevo archivo local nba_salary_per_point.csv.
 
