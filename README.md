@@ -60,6 +60,6 @@ El programa fue verificado directamente inyectando los distintos Streams desde l
 
 - Resistencia a datos sucios: Al leer la cabecera inicial o una línea vacía desde el Stream en memoria, el sistema no crashea (evita el NumberFormatException), sino que lanza un error controlado por consola ("Fila ignorada...") y continúa procesando el resto de jugadores válidos.
 - Reutilización del cálculo: El mapa earnings procesado una sola vez por el caso de uso es consumido con éxito por dos serializadores diferentes de forma consecutiva (demostrando que el flujo no se ha cerrado ni acoplado).
-Generación de archivo exitosa: Al finalizar la ejecución, se crea un fichero válido nba_salary_per_point.csv con cabecera y el resultado mapeado.
+- Generación de archivo exitosa: Al finalizar la ejecución, se crea un fichero válido nba_salary_per_point.csv con cabecera y el resultado mapeado.
 
 **Vídeo explicativo**
