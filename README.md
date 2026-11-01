@@ -8,7 +8,8 @@ Para probar este proyecto desde cero en cualquier máquina:
 
 1. Clona el repositorio:
    - Abre la terminal (Alt + F12) y escribe esto: git clone https://github.com/Shadowdark80/kata2
-   Instrucciones de ejecución
+   
+   **Instrucciones de ejecución**
   1. Abre la carpeta raíz del proyecto en IntelliJ IDEA.
   2. Ve a File -> Project Structure y asegúrate de que el Project SDK y el Language Level están configurados en Java 26.
   3. Haz clic derecho sobre la clase Main.java y selecciona Run ‘Main.main()’.
