@@ -1,6 +1,6 @@
 package software.ulpgc.katas.infrastructure.adapters;
 
-import software.ulpgc.katas.application.ports.out.DataSerializer;
+import software.ulpgc.katas.application.ports.out.*;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -12,7 +12,8 @@ public record StreamSerializer() implements DataSerializer {
     public void serializeData(Map<String, Double> salaryPerPoint, OutputStream output) throws IOException {
         outputStreamNull(output);
         try {
-            dataWriteLine(salaryPerPoint, output);
+            writeLine("Ganancias por punto, ", output);
+            dataWriteLineError(salaryPerPoint, output);
             for (Map.Entry<String, Double> entry : salaryPerPoint.entrySet()){
                 writeLine(formatLine(entry.getKey(), entry.getValue()), output);
             }
@@ -21,10 +22,15 @@ public record StreamSerializer() implements DataSerializer {
         }
     }
 
-    private void dataWriteLine(Map<String, Double> salaryPerPoint, OutputStream outputStream) throws IOException {
-        writeLine("Ganancias por punto , ", outputStream);
+    private void dataWriteLineError(Map<String, Double> salaryPerPoint, OutputStream outputStream) throws IOException {
         if (salaryPerPoint == null || salaryPerPoint.isEmpty()) {
             writeLine("No hay datos disponibles", outputStream);
+        }
+    }
+
+    private void outputStreamNull(OutputStream o) {
+        if (o == null) {
+            throw new IllegalArgumentException("El OutputStream no puede ser nulo");
         }
     }
 
@@ -35,11 +41,5 @@ public record StreamSerializer() implements DataSerializer {
     private void writeLine(String text, OutputStream output) throws IOException {
         String line = text + System.lineSeparator();
         output.write(line.getBytes(StandardCharsets.UTF_8));
-    }
-
-    private void outputStreamNull(OutputStream o) {
-        if (o == null) {
-            throw new IllegalArgumentException("El OutputStream no puede ser nulo");
-        }
     }
 }
