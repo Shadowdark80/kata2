@@ -18,7 +18,9 @@ Nota importante: El archivo nba_players_full_stats.csv debe estar situado direct
 
 **Dependencias y versión de JDK**
 Lenguaje y versión: Java Development Kit (JDK) 26.
+
 Gestor de dependencias: Maven (pom.xml ajustado explícitamente a <maven.compiler.source>26</maven.compiler.source>).
+
 Dependencias externas: Ninguna. Se emplean exclusivamente las bibliotecas nativas de Java (I/O, Util y Streams API) para garantizar control y ligereza en los adaptadores.
 
 **Estructura de la entrega y clases principales**
@@ -26,10 +28,10 @@ Dependencias externas: Ninguna. Se emplean exclusivamente las bibliotecas nativa
 El proyecto implementa la abstracción de Puertos y Adaptadores (Arquitectura Hexagonal):
 
 Dominio (domain.model):
-Player: Record inmutable que representa la entidad del jugador de la NBA.
+Player -> Record inmutable que representa la entidad del jugador de la NBA.
 
 Casos de Uso (usecases):
-SalaryPerPoint: Realiza la lógica matemática, devolviendo un Map<String, Double> con las ganancias por punto. No conoce ficheros, formatos ni impresoras.
+SalaryPerPoint -> Realiza la lógica matemática, devolviendo un Map<String, Double> con las ganancias por punto. No conoce ficheros, formatos ni impresoras.
 
 Puertos de Entrada/Salida (ports.in / ports.out):
 PlayerDeserializer: Contrato para convertir cualquier Reader en una lista de entidades.
