@@ -34,17 +34,21 @@ Casos de Uso (usecases):
 SalaryPerPoint -> Realiza la lógica matemática, devolviendo un Map<String, Double> con las ganancias por punto. No conoce ficheros, formatos ni impresoras.
 
 Puertos de Entrada/Salida (ports.in / ports.out):
-PlayerDeserializer: Contrato para convertir cualquier Reader en una lista de entidades.
+PlayerDeserializer -> Contrato para convertir cualquier Reader en una lista de entidades.
 
 DataSerializer: Contrato genérico para empujar el cálculo final hacia un OutputStream.
 
 Adaptadores (infrastructure.adapters):
-PlayerLoader: Implementación de la entrada que parsea el CSV saltándose la cabecera y controlando errores como líneas en blanco.
-StreamSerializer y CsvStreamSerializer: Convierten el resultado matemático a texto o formato CSV y lo transforman al OutputStream delegando el formateo en métodos privados auxiliares (Separation of Concerns).
-ReaderFactory: Orquesta y abstrae la generación de flujos.
+
+PlayerLoader -> Implementación de la entrada que parsea el CSV saltándose la cabecera y controlando errores como líneas en blanco.
+
+StreamSerializer y CsvStreamSerializer -> Convierten el resultado matemático a texto o formato CSV y lo transforman al OutputStream delegando el formateo en métodos privados auxiliares (Separation of Concerns).
+
+ReaderFactory -> Orquesta y abstrae la generación de flujos.
 
 Main: Conecta las implementaciones y demuestra la capacidad multiplataforma (lee memoria/archivo e imprime consola/fichero).
-🔁 Repetición de la kata y variaciones introducidas
+
+**Repetición de la kata y variaciones introducidas**
 
 Para ganar soltura técnica, la kata se ha repetido tres veces con el mismo alcance principal, practicar la arquitectura hexagonal y familiarizarse y coger soltura con las InputStreams y OutputStreams 
 
