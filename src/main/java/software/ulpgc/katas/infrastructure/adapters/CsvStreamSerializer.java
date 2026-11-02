@@ -5,7 +5,6 @@ import software.ulpgc.katas.application.ports.out.DataSerializer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Map;
 
