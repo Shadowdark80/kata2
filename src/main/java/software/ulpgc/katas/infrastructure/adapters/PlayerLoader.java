@@ -43,7 +43,7 @@ public record PlayerLoader() implements PlayerDeserializer {
             );
         } catch (NumberFormatException e) {
             System.err.println("Error de formato en la fila: " + line);
-            return null
+            return null;
         }
     }
 
