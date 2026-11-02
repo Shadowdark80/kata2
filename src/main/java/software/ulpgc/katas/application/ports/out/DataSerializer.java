@@ -5,5 +5,5 @@ import java.io.OutputStream;
 import java.util.Map;
 
 public interface DataSerializer {
-    void serializeData(Map<String, Double> salaryPerPoint, OutputStream) throws IOException;
+    void serializeData(Map<String, Double> salaryPerPoint, OutputStream outputStream) throws IOException;
 }
