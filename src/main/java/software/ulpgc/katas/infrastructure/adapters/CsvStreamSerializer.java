@@ -13,7 +13,7 @@ public record CsvStreamSerializer() implements DataSerializer {
     public void serializeData(Map<String, Double> salaryPerPoint, OutputStream output) throws IOException {
         outputStreamNull(output);
         try {
-            writeLine("palyerName" + "," + "earningsPerPoint", output);
+            writeLine("playerName" + "," + "earningsPerPoint", output);
             dataWriteLineError(salaryPerPoint, output);
             for (Map.Entry<String, Double> entry : salaryPerPoint.entrySet()) {
                 writeLine(formatLine(entry.getKey(), entry.getValue()), output);
