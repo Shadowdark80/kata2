@@ -18,7 +18,7 @@ public class SalaryPerPoint {
     }
 
     public double calculateEarningsPerPoint(Player player, double totalSeasonPoints) {
-        return player.salary() / player.pointsPerGame();
+        return player.salary() / totalSeasonPoints;
     }
 
     public double totalPointsOnSeason(Player player) {
