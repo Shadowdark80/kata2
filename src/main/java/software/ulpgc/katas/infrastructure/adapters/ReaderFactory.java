@@ -10,12 +10,12 @@ public record ReaderFactory() {
         return new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
     }
 
-    private static Reader createFromMemory(String memoryData) {
+    public static Reader createFromMemory(String memoryData) {
         return new StringReader(memoryData);
     }
 
     private static void fileNotFoundError(File file) throws FileNotFoundException {
-        if(file.exists()){
+        if(!file.exists()){
             throw new FileNotFoundException("El archivo no existe" + file.getAbsolutePath());
         }
     }
